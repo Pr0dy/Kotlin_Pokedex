@@ -2,13 +2,17 @@ package com.app.pokedex_45486_44499
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.pokedex_45486_44499.Networking.ApiRequests.PokeAPIClient
+import com.app.pokedex_45486_44499.Networking.ApiRequests.PokeDataRetriever
+import com.app.pokedex_45486_44499.Networking.PokemonListModel.PokemonListModel
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 
-class MainActivity : AppCompatActivity() {
+private const val TAG = "MainActivity"
 
+class MainActivity : AppCompatActivity(), PokeDataRetriever {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,11 +25,22 @@ class MainActivity : AppCompatActivity() {
         pokemonListRecycler.layoutManager = LinearLayoutManager(this)
 
 
-        for (pokemon in PokeAPIClient.getListOfPokemon().) {
-            pokemon.
-            PokeAPIClient.getPokemon()
-        }
-
         //pokemonListRecycler.adapter = PokemonAdapter(requestedPokemonList)
+    }
+
+    override fun onListDataFetchSucess(pokemonList: List<PokemonListModel>) {
+        Log.d(TAG, "Data Fetch Unsucessfull!")
+    }
+
+    override fun onListDataFetchFailed() {
+        Log.d(TAG, "Data Fetch Sucess!")
+    }
+
+    override fun onPokemonDataFetchSucess(pokemon: List<PokemonModel>) {
+        Log.d(TAG, "Data Fetch Sucess!")
+    }
+
+    override fun onPokemonDataFetchFailed() {
+        Log.d(TAG, "Data Fetch Unsucessfull!")
     }
 }
