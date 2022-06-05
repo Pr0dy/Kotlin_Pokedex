@@ -3,7 +3,7 @@ package com.app.pokedex_45486_44499
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.app.pokedex_45486_44499.PokemonModel.PokemonModel
+import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 
 class PokemonAdapter(val listOfPokemonModel: List<PokemonModel>): RecyclerView.Adapter<PokemonRecyclerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonRecyclerViewHolder {

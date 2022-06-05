@@ -1,4 +1,4 @@
-package com.app.pokedex_45486_44499.PokemonModel
+package com.app.pokedex_45486_44499.Networking.PokemonModel
 
 data class Stat(
     val base_stat: Int,
