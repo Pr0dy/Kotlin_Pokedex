@@ -26,7 +26,9 @@ object PokeAPIClient {
         pokeAPIClient.getPokemonList().enqueue(object : Callback<PokemonListModel>{
             override fun onResponse(call: Call<PokemonListModel>, response: Response<PokemonListModel>) {
                 Log.d(TAG, "onResponse ${response.body()}")
-                listener.onListDataFetchSucess(response.body()!!)
+                if (response.isSuccessful) {
+                    listener.onListDataFetchSucess(response.body()!!)
+                }
             }
 
             override fun onFailure(call: Call<PokemonListModel>, t: Throwable) {
