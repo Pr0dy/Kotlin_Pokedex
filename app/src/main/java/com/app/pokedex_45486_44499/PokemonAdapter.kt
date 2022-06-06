@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 
 class PokemonAdapter(val listOfPokemonModel: List<PokemonModel>): RecyclerView.Adapter<PokemonRecyclerViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonRecyclerViewHolder {
         val layout = LayoutInflater.from(parent.context)
         return PokemonRecyclerViewHolder(layout.inflate(R.layout.pokemon_cell, parent, false))

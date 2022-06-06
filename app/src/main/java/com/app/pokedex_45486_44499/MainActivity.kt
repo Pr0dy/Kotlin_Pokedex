@@ -17,23 +17,23 @@ class MainActivity : AppCompatActivity(), PokeDataRetriever {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initializeRecyclerView()
+        PokeAPIClient.getListOfPokemon(this)
+        //initializeRecyclerView()
     }
 
     fun initializeRecyclerView(){
         val pokemonListRecycler = findViewById<RecyclerView>(R.id.PokemonRecyclerView)
         pokemonListRecycler.layoutManager = LinearLayoutManager(this)
 
-
         //pokemonListRecycler.adapter = PokemonAdapter(requestedPokemonList)
     }
 
-    override fun onListDataFetchSucess(pokemonList: List<PokemonListModel>) {
-        Log.d(TAG, "Data Fetch Unsucessfull!")
+    override fun onListDataFetchSucess(pokemonList: PokemonListModel) {
+        Log.d(TAG, "Data Fetch Sucess!")
     }
 
     override fun onListDataFetchFailed() {
-        Log.d(TAG, "Data Fetch Sucess!")
+        Log.d(TAG, "Data Fetch Unsucessfull!")
     }
 
     override fun onPokemonDataFetchSucess(pokemon: List<PokemonModel>) {
