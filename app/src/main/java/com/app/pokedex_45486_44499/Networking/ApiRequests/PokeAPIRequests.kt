@@ -7,14 +7,12 @@ import retrofit2.Call
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface PokeAPIRequests{
     @GET(POKEMON_LIST)
     fun getPokemonList(): Call<PokemonListModel>
 
-    /*
-    @GET(REQUEST_SINGLE_POKEMON_URL)
-    fun getPokemon(): Call<PokemonModel>
-    */
-
+    @GET("pokemon/{name}")
+    fun getPokemon(@Path("name") name: String): Call<PokemonModel>
 }

@@ -15,16 +15,21 @@ object PokeAPIClient {
         setup()
     }
 
-    private fun setup(): PokeAPIRequests{
-            return Retrofit.Builder().baseUrl(BASE_URL)
-                .addConverterFactory(MoshiConverterFactory
-                .create())
+    private fun setup(): PokeAPIRequests {
+        return Retrofit.Builder().baseUrl(BASE_URL)
+            .addConverterFactory(
+                MoshiConverterFactory
+                    .create()
+            )
             .build().create()
     }
 
-    fun getListOfPokemon(listener: PokeDataRetriever){
-        pokeAPIClient.getPokemonList().enqueue(object : Callback<PokemonListModel>{
-            override fun onResponse(call: Call<PokemonListModel>, response: Response<PokemonListModel>) {
+    fun getListOfPokemon(listener: PokeDataRetriever) {
+        pokeAPIClient.getPokemonList().enqueue(object : Callback<PokemonListModel> {
+            override fun onResponse(
+                call: Call<PokemonListModel>,
+                response: Response<PokemonListModel>
+            ) {
                 Log.d(TAG, "onResponse ${response.body()}")
                 if (response.isSuccessful) {
                     listener.onListDataFetchSucess(response.body()!!)
@@ -38,27 +43,32 @@ object PokeAPIClient {
         })
     }
 
-/*
-private val pokemon: PokeAPIRequests by lazy {
-    setupPokemon()
-}
 
-private fun setupPokemon(): PokeAPIRequests{
-    return Retrofit.Builder().baseUrl(REQUEST_SINGLE_POKEMON_URL)
-        .addConverterFactory(MoshiConverterFactory
-            .create())
-        .build().create()
-}
+    private val pokemon: PokeAPIRequests by lazy {
+        setupPokemon()
+    }
 
-fun getPokemon(){
-    pokemon.getPokemon().enqueue(object : Callback<List<PokemonModel>>{
-        override fun onResponse(call: Call<List<PokemonModel>>, response: Response<List<PokemonModel>>) {
-            Log.d(TAG, "onResponse ${response.body()}")
-        }
+    private fun setupPokemon(): PokeAPIRequests {
+        return Retrofit.Builder().baseUrl(BASE_URL)
+            .addConverterFactory(
+                MoshiConverterFactory
+                    .create()
+            )
+            .build().create()
+    }
 
-        override fun onFailure(call: Call<List<PokemonModel>>, t: Throwable) {
-            Log.d(TAG, "onFailure ${t.message}")
-        }
-    })
-*/
+    fun getPokemon(listener: PokeDataRetriever, pokemonName: String) {
+        pokemon.getPokemon(pokemonName).enqueue(object : Callback<PokemonModel> {
+            override fun onResponse(call: Call<PokemonModel>, response: Response<PokemonModel>) {
+                if (response.isSuccessful) {
+                    listener.onPokemonDataFetchSucess(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<PokemonModel>, t: Throwable) {
+                Log.d(TAG, "onFailure ${t.message}")
+                listener.onListDataFetchFailed()
+            }
+        })
+    }
 }

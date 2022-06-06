@@ -6,6 +6,6 @@ import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 interface PokeDataRetriever {
     fun onListDataFetchSucess(pokemonList: PokemonListModel)
     fun onListDataFetchFailed()
-    fun onPokemonDataFetchSucess(pokemon: List<PokemonModel>)
+    fun onPokemonDataFetchSucess(pokemon: PokemonModel)
     fun onPokemonDataFetchFailed()
 }
