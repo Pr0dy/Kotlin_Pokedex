@@ -14,5 +14,5 @@ interface PokeAPIRequests{
     fun getPokemonList(): Call<PokemonListModel>
 
     @GET("pokemon/{name}")
-    fun getPokemon(@Path("name") name: String): Call<PokemonModel>
+    fun getSingularPokemon(name: String): Call<PokemonModel>
 }

@@ -1,6 +1,4 @@
 package com.app.pokedex_45486_44499.Networking.ApiRequests
-
-import android.util.Log
 import com.app.pokedex_45486_44499.Networking.BASE_URL
 import com.app.pokedex_45486_44499.Networking.PokemonListModel.PokemonListModel
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
@@ -8,9 +6,9 @@ import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import retrofit2.*
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-private const val TAG = "PokeAPIClient"
-
 object PokeAPIClient {
+
+    //petições á API que retorna data com lista de nomes de todos os Pokemons
     private val pokeAPIClient: PokeAPIRequests by lazy {
         setup()
     }
@@ -30,20 +28,18 @@ object PokeAPIClient {
                 call: Call<PokemonListModel>,
                 response: Response<PokemonListModel>
             ) {
-                Log.d(TAG, "onResponse ${response.body()}")
                 if (response.isSuccessful) {
                     listener.onListDataFetchSucess(response.body()!!)
                 }
             }
 
             override fun onFailure(call: Call<PokemonListModel>, t: Throwable) {
-                Log.d(TAG, "onFailure ${t.message}")
                 listener.onListDataFetchFailed()
             }
         })
     }
 
-
+    //petições á API que retornam data referem-te a cada Pokemon individual
     private val pokemon: PokeAPIRequests by lazy {
         setupPokemon()
     }
@@ -58,7 +54,7 @@ object PokeAPIClient {
     }
 
     fun getPokemon(listener: PokeDataRetriever, pokemonName: String) {
-        pokemon.getPokemon(pokemonName).enqueue(object : Callback<PokemonModel> {
+        pokemon.getSingularPokemon(pokemonName).enqueue(object : Callback<PokemonModel> {
             override fun onResponse(call: Call<PokemonModel>, response: Response<PokemonModel>) {
                 if (response.isSuccessful) {
                     listener.onPokemonDataFetchSucess(response.body()!!)
@@ -66,7 +62,6 @@ object PokeAPIClient {
             }
 
             override fun onFailure(call: Call<PokemonModel>, t: Throwable) {
-                Log.d(TAG, "onFailure ${t.message}")
                 listener.onListDataFetchFailed()
             }
         })
