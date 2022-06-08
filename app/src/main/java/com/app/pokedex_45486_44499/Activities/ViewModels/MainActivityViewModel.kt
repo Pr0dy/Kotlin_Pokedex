@@ -1,4 +1,4 @@
-package com.app.pokedex_45486_44499
+package com.app.pokedex_45486_44499.Activities.ViewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

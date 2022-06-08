@@ -1,9 +1,10 @@
-package com.app.pokedex_45486_44499
+package com.app.pokedex_45486_44499.Activities
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
+import com.app.pokedex_45486_44499.R
 
 class PokemonAdapter(private val listOfPokemonModel: MutableList<PokemonModel>): RecyclerView.Adapter<PokemonRecyclerViewHolder>() {
 

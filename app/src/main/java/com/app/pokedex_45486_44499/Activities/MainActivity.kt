@@ -1,4 +1,4 @@
-package com.app.pokedex_45486_44499
+package com.app.pokedex_45486_44499.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,10 +6,13 @@ import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.app.pokedex_45486_44499.Activities.ViewModels.MainActivityViewModel
+import com.app.pokedex_45486_44499.Activities.ViewModels.MainActivityViewModelFactory
 import com.app.pokedex_45486_44499.Networking.ApiRequests.PokeRepository
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
+import com.app.pokedex_45486_44499.R
 
- class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
      private lateinit var viewModel : MainActivityViewModel
      var pokemonList: MutableList<PokemonModel> = mutableListOf()

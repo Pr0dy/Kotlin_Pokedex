@@ -1,10 +1,11 @@
-package com.app.pokedex_45486_44499
+package com.app.pokedex_45486_44499.Activities
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
+import com.app.pokedex_45486_44499.R
 import com.bumptech.glide.Glide
 
 class PokemonRecyclerViewHolder(pokemonCellView: View): RecyclerView.ViewHolder(pokemonCellView) {
