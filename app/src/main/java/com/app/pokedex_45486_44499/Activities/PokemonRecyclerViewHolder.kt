@@ -15,8 +15,8 @@ class PokemonRecyclerViewHolder(pokemonCellView: View): RecyclerView.ViewHolder(
      val pokemonImage = pokemonCellView.findViewById<ImageView>(R.id.pokemonSpriteImage)
 
      fun render(pokemon: PokemonModel){
-            pokemonName.text = pokemon.name
-            pokemonNumber.text = pokemon.id.toString()
+            pokemonName.text = pokemon.name.capitalize()
+            pokemonNumber.text = "#${pokemon.id}"
             Glide.with(pokemonImage.context).load(pokemon.sprites.front_default).into(pokemonImage)
-      }
+     }
 }
