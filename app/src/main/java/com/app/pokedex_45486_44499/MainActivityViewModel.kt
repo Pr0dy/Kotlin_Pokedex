@@ -1,6 +1,7 @@
 package com.app.pokedex_45486_44499
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.app.pokedex_45486_44499.Networking.ApiRequests.PokeAPIClient
@@ -13,8 +14,13 @@ private val TAG = "MainActivity"
 
 class MainActivityViewModel: ViewModel(), PokeDataRetriever {
 
-    private var allPokemonList = MutableLiveData<PokemonListModel>()
-    var pokemonToRenderList = MutableLiveData<List<PokemonModel>>()
+    lateinit var allPokemon: PokemonListModel
+    private val pokemonToRenderList = MutableLiveData<MutableList<PokemonModel>>()
+    val pokemonList = pokemonToRenderList
+
+    init {
+        pokemonToRenderList.value = mutableListOf()
+    }
 
     fun getPokemonListApiCall(){
         PokeAPIClient.getListOfPokemon(this)
@@ -22,7 +28,15 @@ class MainActivityViewModel: ViewModel(), PokeDataRetriever {
 
     override fun onListDataFetchSucess(pokemonList: PokemonListModel) {
         Log.d(TAG, "Sucessful pokemon list request!")
-        this.allPokemonList = pokemonList
+        allPokemon = pokemonList
+        var count = 0
+
+        for (pokemon in pokemonList.results){
+            if (count < 5){
+                PokeAPIClient.getPokemon(this,pokemon.name)
+            }
+            count+=1
+        }
     }
 
     override fun onListDataFetchFailed() {
@@ -30,7 +44,8 @@ class MainActivityViewModel: ViewModel(), PokeDataRetriever {
     }
 
     override fun onPokemonDataFetchSucess(pokemon: PokemonModel) {
-        Log.d(TAG, "Sucessful pokemon request!")
+        Log.d(TAG, "Sucessful pokemon request! ${pokemon.name}")
+        pokemonToRenderList.value?.add(pokemon)
     }
 
     override fun onPokemonDataFetchFailed() {
