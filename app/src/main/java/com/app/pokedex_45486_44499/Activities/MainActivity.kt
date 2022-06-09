@@ -1,8 +1,9 @@
 package com.app.pokedex_45486_44499.Activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val repo = PokeRepository()
         val vmFactory = MainActivityViewModelFactory(repo)
+         val alert = AlertDialog.Builder(this).create()
+        alert.setTitle("Loading Pokemon from API")
+        alert.setMessage("Please wait...")
+        alert.show()
 
         viewModel = ViewModelProvider(this,vmFactory).get(MainActivityViewModel::class.java)
         viewModel.getPokemonListApiCall()
@@ -30,7 +35,11 @@ class MainActivity : AppCompatActivity() {
          viewModel.pokemonToRender.observe(this) {
                 Log.d("Response", pokemonList.size.toString())
                 pokemonList.add(it)
-                initializeRecyclerView(pokemonList)
+
+             if (pokemonList.size == 150){
+                 initializeRecyclerView(pokemonList)
+                 alert.dismiss()
+             }
          }
     }
 
@@ -39,4 +48,4 @@ class MainActivity : AppCompatActivity() {
         pokemonListRecycler.layoutManager = LinearLayoutManager(this)
         pokemonListRecycler.adapter = PokemonAdapter(mutableList)
     }
-   }
+}

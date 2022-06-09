@@ -1,10 +1,14 @@
 package com.app.pokedex_45486_44499.Activities
 
+import android.graphics.Color
+import android.graphics.Color.green
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
+import com.app.pokedex_45486_44499.R
 import com.bumptech.glide.Glide
 
 
@@ -14,6 +18,7 @@ class PokemonRecyclerViewHolder(pokemonCellView: View): RecyclerView.ViewHolder(
      val pokemonNumber = pokemonCellView.findViewById<TextView>(com.app.pokedex_45486_44499.R.id.pokemonNumber)
      val pokemonImage = pokemonCellView.findViewById<ImageView>(com.app.pokedex_45486_44499.R.id.pokemonSpriteImage)
      val pokemonPrimaryTypeImage = pokemonCellView.findViewById<ImageView>(com.app.pokedex_45486_44499.R.id.pokemonPrimaryType)
+     val pokemonCellView = pokemonCellView
 
 
      fun render(pokemon: PokemonModel){
@@ -25,24 +30,78 @@ class PokemonRecyclerViewHolder(pokemonCellView: View): RecyclerView.ViewHolder(
 
      fun setTypeImage(pokemonType: String) {
          when (pokemonType){
-             "normal" -> pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_bug_type_icon) ;
-             "fighting" ->   pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_fighting_type_icon)
-             "flying" ->   pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_flying_type_icon)
-             "poison" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_poison_type_icon)
-             "ground" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_ground_type_icon)
-             "rock" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_rock_type_icon)
-             "bug" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_bug_type_icon)
-             "ghost" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_ghost_type_icon)
-             "steel" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_steel_type_icon)
-             "fire" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_fire_type_icon)
-             "water" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_water_type_icon)
-             "grass" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_grass_type_icon)
-             "electric" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_electric_type_icon)
-             "psychic" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_psychic_type_icon)
-             "ice" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_ice_type_icon)
-             "dragon" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_dragon_type_icon)
-             "dark" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_dark_type_icon)
-             "fairy" ->  pokemonPrimaryTypeImage.setImageResource(com.app.pokedex_45486_44499.R.drawable.ic_pok_mon_fairy_type_icon)
+             "normal" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_normal_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(168,168,165))
+             }
+             "fighting" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_fighting_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(177,61,79))
+             }
+             "flying" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_flying_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(164,145,234))
+             }
+             "poison" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_poison_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(148,70,145))
+             }
+             "ground" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_ground_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(255,193,117))
+             }
+             "rock" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_rock_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(180,161,75))
+             }
+             "bug" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_bug_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(171,185,66))
+             }
+             "ghost" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_ghost_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(108,89,148))
+             }
+             "steel" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_steel_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(180,180,202))
+             }
+             "fire" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_fire_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(242,171,101))
+             }
+             "water" ->  {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_water_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(112,143,233))
+             }
+             "grass" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_grass_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(139,198,96))
+             }
+             "electric" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_electric_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(242,210,84))
+             }
+             "psychic" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_psychic_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(230,99,136))
+             }
+             "ice" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_ice_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(166,214,215))
+             }
+             "dragon" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_dragon_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(105,59,239))
+             }
+             "dark" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_dark_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(108,89,74))
+             }
+             "fairy" -> {
+                 pokemonPrimaryTypeImage.setImageResource(R.drawable.ic_pok_mon_fairy_type_icon)
+                 pokemonCellView.setBackgroundColor(Color.rgb(226,157,172))
+             }
          }
      }
 }
