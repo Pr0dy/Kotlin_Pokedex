@@ -2,6 +2,7 @@ package com.app.pokedex_45486_44499.Activities
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                  alert.dismiss()
              }
          }
+
     }
 
     fun initializeRecyclerView(mutableList: MutableList<PokemonModel>) {

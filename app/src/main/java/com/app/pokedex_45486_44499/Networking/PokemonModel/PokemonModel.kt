@@ -9,5 +9,6 @@ data class PokemonModel(
     val sprites: Sprites,
     val stats: List<Stat>,
     val types: List<Type>,
-    val weight: Int
+    val weight: Int,
+    var isFavorite: Boolean = false
 )

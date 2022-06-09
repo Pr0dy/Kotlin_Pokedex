@@ -1,31 +1,48 @@
 package com.app.pokedex_45486_44499.Activities
-
 import android.graphics.Color
-import android.graphics.Color.green
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import com.app.pokedex_45486_44499.R
 import com.bumptech.glide.Glide
 
 
-class PokemonRecyclerViewHolder(pokemonCellView: View): RecyclerView.ViewHolder(pokemonCellView) {
+class PokemonRecyclerViewHolder(val pokemonCellView: View): RecyclerView.ViewHolder(pokemonCellView) {
 
      val pokemonName = pokemonCellView.findViewById<TextView>(com.app.pokedex_45486_44499.R.id.pokemonName)
      val pokemonNumber = pokemonCellView.findViewById<TextView>(com.app.pokedex_45486_44499.R.id.pokemonNumber)
-     val pokemonImage = pokemonCellView.findViewById<ImageView>(com.app.pokedex_45486_44499.R.id.pokemonSpriteImage)
-     val pokemonPrimaryTypeImage = pokemonCellView.findViewById<ImageView>(com.app.pokedex_45486_44499.R.id.pokemonPrimaryType)
-     val pokemonCellView = pokemonCellView
+     val pokemonImage = pokemonCellView.findViewById<ImageView>(R.id.pokemonSpriteImage)
+     val pokemonPrimaryTypeImage = pokemonCellView.findViewById<ImageView>(R.id.pokemonPrimaryType)
+     val pokemonFavoriteIcon = pokemonCellView.findViewById<ImageButton>(R.id.favoritePokemon)
 
 
-     fun render(pokemon: PokemonModel){
+    fun render(pokemon: PokemonModel){
             pokemonName.text = pokemon.name.capitalize()
             pokemonNumber.text = "#${pokemon.id}"
             Glide.with(pokemonImage.context).load(pokemon.sprites.front_default).into(pokemonImage)
             setTypeImage(pokemon.types[0].type.name)
+
+            if (!pokemon.isFavorite) pokemonFavoriteIcon.visibility = INVISIBLE
+
+            pokemonFavoriteIcon.setOnClickListener{
+               setFavoriteIcon(pokemon)
+            }
+    }
+
+     fun setFavoriteIcon(pokemon: PokemonModel){
+         if (pokemon.isFavorite){
+             pokemon.isFavorite = false
+             pokemonFavoriteIcon.background = null
+
+         } else {
+             pokemon.isFavorite = true
+             pokemonFavoriteIcon.setBackgroundResource(0)
+         }
      }
 
      fun setTypeImage(pokemonType: String) {
