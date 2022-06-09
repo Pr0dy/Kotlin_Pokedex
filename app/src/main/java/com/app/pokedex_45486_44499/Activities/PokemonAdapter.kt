@@ -1,5 +1,6 @@
 package com.app.pokedex_45486_44499.Activities
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
