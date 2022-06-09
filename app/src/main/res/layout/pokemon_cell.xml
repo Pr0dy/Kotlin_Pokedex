@@ -6,13 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
+
     <ImageView
         android:id="@+id/pokemonSpriteImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/favoritePokemon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:background="@color/black" />
@@ -21,10 +22,9 @@
         android:id="@+id/favoritePokemon"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@+id/pokemonSpriteImage"
         app:layout_constraintTop_toTopOf="parent"
         tools:background="@color/black" />
 
@@ -32,35 +32,33 @@
         android:id="@+id/pokemonPrimaryType"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/pokemonSpriteImage"
-        app:layout_constraintStart_toEndOf="@+id/pokemonName"
+
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/black"/>
-
-
+        tools:background="@color/black" />
 
     <TextView
         android:id="@+id/pokemonNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.493"
         tools:text="#001" />
 
     <TextView
         android:id="@+id/pokemonName"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/pokemonSpriteImage"
-        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toEndOf="@+id/pokemonNumber"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.487"
         tools:text="pokemon Name" />
 
 
