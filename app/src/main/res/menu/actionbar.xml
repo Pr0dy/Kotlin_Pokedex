@@ -7,7 +7,7 @@
         android:id="@+id/GenerationSelection"
         android:title="GenerationButton"
         android:icon="@drawable/ic_select_generation"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
     />
 
 

@@ -1,5 +1,4 @@
 package com.app.pokedex_45486_44499.Activities
-
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -20,6 +19,7 @@ class MainActivity : AppCompatActivity() {
      private lateinit var viewModel : MainActivityViewModel
      var pokemonList: MutableList<PokemonModel> = mutableListOf()
      var favoriteList: MutableList<PokemonModel> = mutableListOf()
+     var favoriteListShowing = false
 
      override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,16 +44,22 @@ class MainActivity : AppCompatActivity() {
                  alert.dismiss()
              }
          }
-
-
-
-
     }
 
     fun initializeRecyclerView(mutableList: MutableList<PokemonModel>) {
         val pokemonListRecycler = findViewById<RecyclerView>(R.id.PokemonRecyclerView)
         pokemonListRecycler.layoutManager = LinearLayoutManager(this)
         pokemonListRecycler.adapter = PokemonAdapter(mutableList)
+    }
+
+    fun renderFavoritePokemonList(pokemonList: MutableList<PokemonModel>){
+        for (pokemon in pokemonList){
+            if (pokemon.isFavorite){
+                favoriteList.add(pokemon)
+            }
+        }
+        initializeRecyclerView(favoriteList)
+        favoriteListShowing = true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -73,7 +79,13 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.FavoriteButton -> {
-                // Action goes here
+                if(!favoriteListShowing){
+                    renderFavoritePokemonList(pokemonList)
+                } else {
+                    initializeRecyclerView(pokemonList)
+                    favoriteList.clear()
+                    favoriteListShowing = false
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)
