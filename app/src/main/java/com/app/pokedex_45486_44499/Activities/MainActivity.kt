@@ -2,6 +2,8 @@ package com.app.pokedex_45486_44499.Activities
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -53,4 +55,29 @@ class MainActivity : AppCompatActivity() {
         pokemonListRecycler.layoutManager = LinearLayoutManager(this)
         pokemonListRecycler.adapter = PokemonAdapter(mutableList)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.actionbar, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.GenerationSelection -> {
+                // Action goes here
+                true
+            }
+            R.id.LogoutButton -> {
+                // Action goes here
+                true
+            }
+            R.id.FavoriteButton -> {
+                // Action goes here
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 }

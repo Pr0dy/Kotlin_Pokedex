@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <item
         android:id="@+id/GenerationSelection"
         android:title="GenerationButton"
-        app:showasAction= "always"/>
+        android:icon="@drawable/ic_select_generation"
+        app:showAsAction="always"
+    />
 
 
     <item android:title="Favorites"
         android:id="@+id/FavoriteButton"
-        app:showasAction= "always
-    "/>
+        android:icon="@drawable/star"
+        app:showAsAction="always"
+    />
 
     <item android:title="Logout"
+          android:icon="@drawable/ic_logout"
           android:id="@+id/LogoutButton"
-          app:showasAction= "always"
+        app:showAsAction="always"
     />
 </menu>
