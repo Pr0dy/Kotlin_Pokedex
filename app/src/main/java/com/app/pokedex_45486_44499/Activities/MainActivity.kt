@@ -2,7 +2,6 @@ package com.app.pokedex_45486_44499.Activities
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
      private lateinit var viewModel : MainActivityViewModel
      var pokemonList: MutableList<PokemonModel> = mutableListOf()
+     var favoriteList: MutableList<PokemonModel> = mutableListOf()
 
      override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +42,9 @@ class MainActivity : AppCompatActivity() {
                  alert.dismiss()
              }
          }
+
+
+
 
     }
 

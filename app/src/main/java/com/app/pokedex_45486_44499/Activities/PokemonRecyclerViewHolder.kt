@@ -1,8 +1,7 @@
 package com.app.pokedex_45486_44499.Activities
 import android.graphics.Color
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -27,7 +26,8 @@ class PokemonRecyclerViewHolder(val pokemonCellView: View): RecyclerView.ViewHol
             Glide.with(pokemonImage.context).load(pokemon.sprites.front_default).into(pokemonImage)
             setTypeImage(pokemon.types[0].type.name)
 
-            if (!pokemon.isFavorite) pokemonFavoriteIcon.visibility = INVISIBLE
+            if (pokemon.isFavorite) pokemonFavoriteIcon.setBackgroundResource(R.drawable.star)
+            else pokemonFavoriteIcon.setBackgroundResource(R.drawable.empty)
 
             pokemonFavoriteIcon.setOnClickListener{
                setFavoriteIcon(pokemon)
@@ -37,11 +37,11 @@ class PokemonRecyclerViewHolder(val pokemonCellView: View): RecyclerView.ViewHol
      fun setFavoriteIcon(pokemon: PokemonModel){
          if (pokemon.isFavorite){
              pokemon.isFavorite = false
-             pokemonFavoriteIcon.background = null
+             pokemonFavoriteIcon.setBackgroundResource(R.drawable.empty)
 
          } else {
              pokemon.isFavorite = true
-             pokemonFavoriteIcon.setBackgroundResource(0)
+             pokemonFavoriteIcon.setBackgroundResource(R.drawable.star)
          }
      }
 
