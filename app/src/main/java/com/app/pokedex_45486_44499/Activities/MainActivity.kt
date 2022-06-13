@@ -1,4 +1,5 @@
 package com.app.pokedex_45486_44499.Activities
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -13,6 +14,8 @@ import com.app.pokedex_45486_44499.Activities.ViewModels.MainActivityViewModelFa
 import com.app.pokedex_45486_44499.Networking.ApiRequests.PokeRepository
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import com.app.pokedex_45486_44499.R
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.LogoutButton -> {
-                // Action goes here
+                finish()
                 true
             }
             R.id.FavoriteButton -> {

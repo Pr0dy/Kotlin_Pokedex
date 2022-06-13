@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        Firebase.auth.signOut()
         mAuth = Firebase.auth
         username = findViewById(R.id.editTextTextPersonName)
         password = findViewById(R.id.editTextTextPassword)
@@ -49,7 +50,6 @@ class LoginActivity : AppCompatActivity() {
                     if(it.isSuccessful){
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
-                        finish()
                     } else {
                         Toast.makeText(this, "Failed to login! Account does not exist, try again!", Toast.LENGTH_LONG).show()
                     }
