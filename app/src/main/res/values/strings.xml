@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">SimplePokedex
-    </string>
+    <string name="app_name">SimplePokedex</string>
+    <string name="hint_username" translatable="false">Your username</string>
+    <string name="hint_password" translatable="false">Your password</string>
+    <string name="action_authenticate" translatable="false">Authenticate</string>
+    <string name="save_credentials" translatable="false">Save Credentials</string>
+    <string name="error_invalid_credentials" translatable="false">Invalid Credentials</string>
+    <string name="login" translatable="false"> Welcome to SimplePokedex</string>
 </resources>

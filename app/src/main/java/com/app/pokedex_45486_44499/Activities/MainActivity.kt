@@ -70,10 +70,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.GenerationSelection -> {
-                // Action goes here
-                true
-            }
             R.id.LogoutButton -> {
                 // Action goes here
                 true

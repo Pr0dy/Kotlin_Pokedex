@@ -3,14 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <item
-        android:id="@+id/GenerationSelection"
-        android:title="GenerationButton"
-        android:icon="@drawable/ic_select_generation"
-        app:showAsAction="ifRoom"
-    />
-
-
     <item android:title="Favorites"
         android:id="@+id/FavoriteButton"
         android:icon="@drawable/star"

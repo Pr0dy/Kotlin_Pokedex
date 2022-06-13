@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\35192\\Desktop\\Pokedex_45486_44499\\credentials\\release.keystore')
+            storePassword 'pokedex'
+            keyAlias 'pokedex'
+            keyPassword 'pokedex'
+        }
+    }
     compileSdk 32
 
     defaultConfig {
