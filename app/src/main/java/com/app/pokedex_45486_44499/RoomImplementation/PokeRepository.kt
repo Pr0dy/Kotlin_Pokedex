@@ -21,11 +21,15 @@ class PokeRepository(private val pokemonDAO: PokemonDAO) {
         }
     }
 
-    /*
-    suspend fun getPokemonList(limit: Int, offset: Int): PokemonListModel {
-        return PokeAPIClient.pokeAPI.getPokemonList(limit,offset)
+    fun getPokemonForPaging(upperID: Int, lowerID: Int):List<PokemonModel> {
+
+        var pokemonForPaging: List<PokemonModel>? = null
+
+        PokemonDatabase.databaseWriteExecutor.execute{
+             pokemonForPaging = pokemonDAO.getPokemonForPaging(upperID,lowerID)
+        }
+        return pokemonForPaging!!
     }
-    */
 
     suspend fun getPokemonList(): PokemonListModel {
         return PokeAPIClient.pokeAPI.getPokemonList()

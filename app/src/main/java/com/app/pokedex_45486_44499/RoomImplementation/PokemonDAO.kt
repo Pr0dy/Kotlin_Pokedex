@@ -17,4 +17,7 @@ interface PokemonDAO {
 
     @Query("UPDATE PokemonTable SET isFavorite = :set WHERE id = :pokemonID")
     fun updateFavorite(pokemonID: Int, set: Boolean)
+
+    @Query("SELECT * FROM PokemonTable WHERE id < :upperID AND id >= :lowerID")
+    fun getPokemonForPaging(upperID: Int, lowerID: Int): List<PokemonModel>
 }
