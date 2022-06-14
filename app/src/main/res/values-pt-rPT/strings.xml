@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SimplePokedex</string>
-    <string name="hint_username" translatable="false">Nome de utilizador</string>
+    <string name="hint_username" translatable="false">Emailr</string>
     <string name="hint_password" translatable="false">Palavra-passe</string>
-    <string name="action_authenticate" translatable="false">Autenticação</string>
-    <string name="save_credentials">Guardar credenciais</string>
+    <string name="action_authenticate" translatable="false">Entrar</string>
     <string name="error_invalid_credentials">Credenciais Inválidas</string>
     <string name="login" translatable="false"> Bem-Vindo ao SimplePokedex</string>
 </resources>

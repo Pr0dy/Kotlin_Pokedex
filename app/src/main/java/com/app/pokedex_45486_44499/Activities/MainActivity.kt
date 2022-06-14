@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.pokedex_45486_44499.ViewModels.MainActivityViewModel
 import com.app.pokedex_45486_44499.ViewModels.MainActivityViewModelFactory
-import com.app.pokedex_45486_44499.RoomImplementation.PokeRepository
+import com.app.pokedex_45486_44499.Room.PokeRepository
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import com.app.pokedex_45486_44499.R
 import com.app.pokedex_45486_44499.SimplePokedexApplication

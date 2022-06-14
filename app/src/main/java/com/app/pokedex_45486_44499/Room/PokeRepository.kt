@@ -1,4 +1,4 @@
-package com.app.pokedex_45486_44499.RoomImplementation
+package com.app.pokedex_45486_44499.Room
 
 import androidx.lifecycle.LiveData
 import com.app.pokedex_45486_44499.Networking.ApiRequests.PokeAPIClient

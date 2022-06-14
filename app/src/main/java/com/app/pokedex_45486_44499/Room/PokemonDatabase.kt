@@ -1,11 +1,10 @@
-package com.app.pokedex_45486_44499.RoomImplementation
+package com.app.pokedex_45486_44499.Room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.app.pokedex_45486_44499.Activities.Converters
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import java.util.concurrent.Executors
 

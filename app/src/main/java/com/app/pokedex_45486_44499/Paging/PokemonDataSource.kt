@@ -1,9 +1,9 @@
-package com.app.pokedex_45486_44499.Activities
+package com.app.pokedex_45486_44499.Paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
-import com.app.pokedex_45486_44499.RoomImplementation.PokeRepository
+import com.app.pokedex_45486_44499.Room.PokeRepository
 
 internal class PokemonDataSource(private val repository: PokeRepository):
     PagingSource<Int, PokemonModel>() {

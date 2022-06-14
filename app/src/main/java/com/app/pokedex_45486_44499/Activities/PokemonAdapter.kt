@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import com.app.pokedex_45486_44499.R
-import com.app.pokedex_45486_44499.RoomImplementation.PokeRepository
+import com.app.pokedex_45486_44499.Room.PokeRepository
 
 class PokemonAdapter(
     private val listOfPokemonModel: MutableList<PokemonModel>,

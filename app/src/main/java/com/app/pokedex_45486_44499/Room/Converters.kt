@@ -1,10 +1,9 @@
-package com.app.pokedex_45486_44499.Activities
+package com.app.pokedex_45486_44499.Room
 
 import androidx.room.TypeConverter
 import com.app.pokedex_45486_44499.Networking.PokemonModel.Sprites
 import com.app.pokedex_45486_44499.Networking.PokemonModel.Type
 import com.app.pokedex_45486_44499.Networking.PokemonModel.TypeX
-import com.google.gson.Gson
 
 class Converters {
      @TypeConverter
