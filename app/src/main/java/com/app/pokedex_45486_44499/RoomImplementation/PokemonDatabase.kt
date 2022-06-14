@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.app.pokedex_45486_44499.Activities.Converters
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import java.util.concurrent.Executors
 
-
-@Database(entities = [PokemonModel::class], version = 1, exportSchema = false)
+@Database(entities = [PokemonModel::class], version = 11, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class PokemonDatabase: RoomDatabase() {
     abstract fun  pokemonDao(): PokemonDAO
 
@@ -20,7 +22,7 @@ abstract class PokemonDatabase: RoomDatabase() {
            return INSTANCE ?: synchronized(this){
                val instance = Room.databaseBuilder(
                    context.applicationContext, PokemonDatabase::class.java, "pokemon_database"
-               ).build()
+               ).fallbackToDestructiveMigration().build()
 
                INSTANCE = instance
                instance

@@ -1,5 +1,6 @@
 package com.app.pokedex_45486_44499.ViewModels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,9 +11,15 @@ import kotlinx.coroutines.launch
 
 class MainActivityViewModel(private val pokeRepository: PokeRepository): ViewModel(){
 
-    val pokemonToRender: MutableLiveData<PokemonModel> = MutableLiveData()
     val pokeListResponse: MutableLiveData<PokemonListModel> = MutableLiveData()
 
+    fun getPokemonFromDB(): LiveData<List<PokemonModel>>{
+        return pokeRepository.allPokemonList
+    }
+
+    fun addPokemon(pokemon: PokemonModel){
+        pokeRepository.insert(pokemon)
+    }
 
     fun getPokemonListApiCall(){
        viewModelScope.launch {
@@ -26,7 +33,8 @@ class MainActivityViewModel(private val pokeRepository: PokeRepository): ViewMod
          viewModelScope.launch {
             for (pokemon in pokeListResponse.value?.results!!){
                 val response = pokeRepository.getPokemon(pokemon.name)
-                pokemonToRender.value = response
+                print("i was here")
+                addPokemon(response)
             }
          }
     }

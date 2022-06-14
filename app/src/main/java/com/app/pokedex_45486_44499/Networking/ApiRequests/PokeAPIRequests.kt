@@ -7,8 +7,11 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface PokeAPIRequests{
-    @GET("pokemon?limit={limit}&offset={offset}")
-    suspend fun getPokemonList(@Path("limit") limit: Int, @Path("offset") offset: Int): PokemonListModel
+    //@GET("pokemon?limit={limit}&offset={offset}")
+    //suspend fun getPokemonList(@Path("limit") limit: Int, @Path("offset") offset: Int): PokemonListModel
+
+    @GET("pokemon?limit=150{&offset=0")
+    suspend fun getPokemonList(): PokemonListModel
 
     @GET("pokemon/{name}")
     suspend fun getSingularPokemon( @Path("name") name: String): PokemonModel

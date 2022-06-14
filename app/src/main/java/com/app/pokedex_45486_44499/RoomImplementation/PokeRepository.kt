@@ -15,8 +15,14 @@ class PokeRepository(private val pokemonDAO: PokemonDAO) {
         }
     }
 
+    /*
     suspend fun getPokemonList(limit: Int, offset: Int): PokemonListModel {
         return PokeAPIClient.pokeAPI.getPokemonList(limit,offset)
+    }
+    */
+
+    suspend fun getPokemonList(): PokemonListModel {
+        return PokeAPIClient.pokeAPI.getPokemonList()
     }
 
     suspend fun getPokemon(pokeName: String): PokemonModel{

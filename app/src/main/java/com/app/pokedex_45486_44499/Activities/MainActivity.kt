@@ -3,6 +3,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -13,10 +14,14 @@ import com.app.pokedex_45486_44499.ViewModels.MainActivityViewModelFactory
 import com.app.pokedex_45486_44499.RoomImplementation.PokeRepository
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import com.app.pokedex_45486_44499.R
+import com.app.pokedex_45486_44499.SimplePokedexApplication
 
 class MainActivity : AppCompatActivity() {
 
-     private lateinit var viewModel : MainActivityViewModel
+     private val viewModel : MainActivityViewModel by viewModels{
+         MainActivityViewModelFactory((application as SimplePokedexApplication).repository)
+     }
+
      var pokemonList: MutableList<PokemonModel> = mutableListOf()
      var favoriteList: MutableList<PokemonModel> = mutableListOf()
      var favoriteListShowing = false
@@ -24,23 +29,20 @@ class MainActivity : AppCompatActivity() {
      override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val repo = PokeRepository()
-        val vmFactory = MainActivityViewModelFactory(repo)
-         val alert = AlertDialog.Builder(this).create()
+
+        val alert = AlertDialog.Builder(this).create()
         alert.setTitle("Loading Pokemon from API")
         alert.setMessage("Please wait...")
         alert.show()
 
-        viewModel = ViewModelProvider(this,vmFactory).get(MainActivityViewModel::class.java)
         viewModel.getPokemonListApiCall()
 
 
-         viewModel.pokemonToRender.observe(this) {
+         viewModel.getPokemonFromDB().observe(this) {
                 Log.d("Response", pokemonList.size.toString())
-                pokemonList.add(it)
 
-             if (pokemonList.size == 150){
-                 initializeRecyclerView(pokemonList)
+             if (it.size == 9){
+                 initializeRecyclerView(it as MutableList<PokemonModel>)
                  alert.dismiss()
              }
          }
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     fun renderFavoritePokemonList(pokemonList: MutableList<PokemonModel>){
         for (pokemon in pokemonList){
-            if (pokemon.isFavorite){
+            if (pokemon.isFavorite!!){
                 favoriteList.add(pokemon)
             }
         }

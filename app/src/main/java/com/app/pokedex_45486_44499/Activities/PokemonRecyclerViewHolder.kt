@@ -26,7 +26,8 @@ class PokemonRecyclerViewHolder(val pokemonCellView: View): RecyclerView.ViewHol
             Glide.with(pokemonImage.context).load(pokemon.sprites.front_default).into(pokemonImage)
             setTypeImage(pokemon.types[0].type.name)
 
-            if (pokemon.isFavorite) pokemonFavoriteIcon.setBackgroundResource(R.drawable.star)
+
+        if (pokemon.isFavorite) pokemonFavoriteIcon.setBackgroundResource(R.drawable.star)
             else pokemonFavoriteIcon.setBackgroundResource(R.drawable.empty)
 
             pokemonFavoriteIcon.setOnClickListener{
