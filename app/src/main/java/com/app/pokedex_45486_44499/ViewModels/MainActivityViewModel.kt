@@ -1,9 +1,9 @@
-package com.app.pokedex_45486_44499.Activities.ViewModels
+package com.app.pokedex_45486_44499.ViewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.pokedex_45486_44499.Networking.ApiRequests.PokeRepository
+import com.app.pokedex_45486_44499.RoomImplementation.PokeRepository
 import com.app.pokedex_45486_44499.Networking.PokemonListModel.PokemonListModel
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import kotlinx.coroutines.launch

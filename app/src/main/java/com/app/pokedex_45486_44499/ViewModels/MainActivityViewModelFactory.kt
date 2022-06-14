@@ -1,7 +1,7 @@
-package com.app.pokedex_45486_44499.Activities.ViewModels
+package com.app.pokedex_45486_44499.ViewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.app.pokedex_45486_44499.Networking.ApiRequests.PokeRepository
+import com.app.pokedex_45486_44499.RoomImplementation.PokeRepository
 
 class MainActivityViewModelFactory(private val repository: PokeRepository):  ViewModelProvider.Factory {
 

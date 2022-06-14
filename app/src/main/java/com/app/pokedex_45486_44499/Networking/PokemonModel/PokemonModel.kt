@@ -1,14 +1,19 @@
 package com.app.pokedex_45486_44499.Networking.PokemonModel
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "PokemonTable")
 data class PokemonModel(
-    val height: Int,
+    @PrimaryKey(autoGenerate = false)
     val id: Int,
-    val is_default: Boolean,
+    @ColumnInfo(name = "name")
     val name: String,
-    val species: Species,
+    @ColumnInfo(name = "sprites")
     val sprites: Sprites,
-    val stats: List<Stat>,
+    @ColumnInfo(name = "types")
     val types: List<Type>,
-    val weight: Int,
+    @ColumnInfo(name = "isFavorite")
     var isFavorite: Boolean = false
 )

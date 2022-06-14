@@ -1,5 +1,4 @@
 package com.app.pokedex_45486_44499.Activities
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -9,13 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.app.pokedex_45486_44499.Activities.ViewModels.MainActivityViewModel
-import com.app.pokedex_45486_44499.Activities.ViewModels.MainActivityViewModelFactory
-import com.app.pokedex_45486_44499.Networking.ApiRequests.PokeRepository
+import com.app.pokedex_45486_44499.ViewModels.MainActivityViewModel
+import com.app.pokedex_45486_44499.ViewModels.MainActivityViewModelFactory
+import com.app.pokedex_45486_44499.RoomImplementation.PokeRepository
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import com.app.pokedex_45486_44499.R
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
