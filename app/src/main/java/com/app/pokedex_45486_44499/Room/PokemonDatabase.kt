@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import com.app.pokedex_45486_44499.Networking.PokemonModel.PokemonModel
 import java.util.concurrent.Executors
 
-@Database(entities = [PokemonModel::class], version = 20, exportSchema = false)
+@Database(entities = [PokemonModel::class], version = 25, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class PokemonDatabase: RoomDatabase() {
     abstract fun  pokemonDao(): PokemonDAO
