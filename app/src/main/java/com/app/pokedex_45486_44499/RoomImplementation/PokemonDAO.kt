@@ -15,4 +15,6 @@ interface PokemonDAO {
     @Insert
     fun insertPokemon(pokemon: PokemonModel)
 
+    @Query("UPDATE PokemonTable SET isFavorite = :set WHERE id = :pokemonID")
+    fun updateFavorite(pokemonID: Int, set: Boolean)
 }

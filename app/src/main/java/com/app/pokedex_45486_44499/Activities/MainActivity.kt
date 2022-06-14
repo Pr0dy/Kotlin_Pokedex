@@ -1,12 +1,10 @@
 package com.app.pokedex_45486_44499.Activities
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.pokedex_45486_44499.ViewModels.MainActivityViewModel
@@ -25,6 +23,7 @@ class MainActivity : AppCompatActivity() {
      var pokemonList: MutableList<PokemonModel> = mutableListOf()
      var favoriteList: MutableList<PokemonModel> = mutableListOf()
      var favoriteListShowing = false
+     var update = true
 
      override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,23 +34,26 @@ class MainActivity : AppCompatActivity() {
         alert.setMessage("Please wait...")
         alert.show()
 
-        viewModel.getPokemonListApiCall()
-
 
          viewModel.getPokemonFromDB().observe(this) {
-                Log.d("Response", pokemonList.size.toString())
 
-             if (it.size == 9){
-                 initializeRecyclerView(it as MutableList<PokemonModel>)
+             if(it.isEmpty()){
+                 viewModel.getPokemonListApiCall()
+             }
+
+             if (it.size == 150 && update){
+                 update = false
+                 pokemonList = it as MutableList<PokemonModel>
+                 initializeRecyclerView(it as MutableList<PokemonModel>,(application as SimplePokedexApplication).repository)
                  alert.dismiss()
              }
          }
     }
 
-    fun initializeRecyclerView(mutableList: MutableList<PokemonModel>) {
+    fun initializeRecyclerView(mutableList: MutableList<PokemonModel>, repository: PokeRepository) {
         val pokemonListRecycler = findViewById<RecyclerView>(R.id.PokemonRecyclerView)
         pokemonListRecycler.layoutManager = LinearLayoutManager(this)
-        pokemonListRecycler.adapter = PokemonAdapter(mutableList)
+        pokemonListRecycler.adapter = PokemonAdapter(mutableList,repository)
     }
 
     fun renderFavoritePokemonList(pokemonList: MutableList<PokemonModel>){
@@ -60,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 favoriteList.add(pokemon)
             }
         }
-        initializeRecyclerView(favoriteList)
+        initializeRecyclerView(favoriteList, (application as SimplePokedexApplication).repository)
         favoriteListShowing = true
     }
 
@@ -80,7 +82,10 @@ class MainActivity : AppCompatActivity() {
                 if(!favoriteListShowing){
                     renderFavoritePokemonList(pokemonList)
                 } else {
-                    initializeRecyclerView(pokemonList)
+                    initializeRecyclerView(
+                        pokemonList,
+                        (application as SimplePokedexApplication).repository
+                    )
                     favoriteList.clear()
                     favoriteListShowing = false
                 }

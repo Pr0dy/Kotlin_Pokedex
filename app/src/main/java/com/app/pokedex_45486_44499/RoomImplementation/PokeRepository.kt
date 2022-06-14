@@ -15,6 +15,12 @@ class PokeRepository(private val pokemonDAO: PokemonDAO) {
         }
     }
 
+    fun updateFavoritePokemonState(pokemon: PokemonModel){
+        PokemonDatabase.databaseWriteExecutor.execute{
+            pokemonDAO.updateFavorite(pokemon.id, pokemon.isFavorite)
+        }
+    }
+
     /*
     suspend fun getPokemonList(limit: Int, offset: Int): PokemonListModel {
         return PokeAPIClient.pokeAPI.getPokemonList(limit,offset)
